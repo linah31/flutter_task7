@@ -29,7 +29,27 @@ class _MyApp2State extends State<MyApp2> {
   File? _image;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("MyApp"),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              _image!= null? Image.file(_image!,width: 250, fit: BoxFit.cover,) :Image.network("https://media.istockphoto.com/photos/global-communication-network-picture-id1332002332",width: 300,),
+              picbtns(title: "pick from gallery",
+                  icon: Icons.image_outlined,
+                  onclick:()=>getimg(ImageSource.gallery)),
+              picbtns(title: "pick from Camera",
+                  icon: Icons.camera_alt,
+                  onclick:()=>getimg(ImageSource.camera)),
+
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
